@@ -5,7 +5,6 @@ import api from "../../services/api";
 import './styles.css';
 
 export default function Pokedex() {
-  // const [data, setData] = useState();
   const [pokemon, setPokemon] = useState();
   const [namePokemon, setNamePokemon] = useState();
   const [spinner, setSpinner] = useState();
@@ -75,7 +74,7 @@ export default function Pokedex() {
               {
                 pokemon ? (
                   <p className='text-center'>{pokemon.data.id} - {pokemon.data.name}</p>
-                ):(
+                ) : (
                   ''
                 )
               }
@@ -98,7 +97,10 @@ export default function Pokedex() {
           <div className='form-group'>
             <div className='column'>
               <div className='border-circle text-center'>
-                <div className='circle text-center'> </div>
+                <div className={
+                  pokemon ? 'circle-success text-center' : (spinner ? 'circle-warning text-center' : 'circle-danger text-center')
+                }>
+                </div>
               </div>
             </div>
             <div className='column text-end'>

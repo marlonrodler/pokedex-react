@@ -130,13 +130,39 @@
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
-.circle {
+.circle-success {
   display: flex;
   height: 40px;
   width: 40px;
   margin: 0 auto;
   align-items: center;
   background-color: #2CACFC;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+  animation: animateCircle 1.5s linear infinite;
+}
+
+.circle-warning {
+  display: flex;
+  height: 40px;
+  width: 40px;
+  margin: 0 auto;
+  align-items: center;
+  background-color: #ffff6e;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+  animation: animateCircle 1.5s linear infinite;
+}
+
+.circle-danger {
+  display: flex;
+  height: 40px;
+  width: 40px;
+  margin: 0 auto;
+  align-items: center;
+  background-color: #ff815e;
   border-radius: 50%;
   border: 1px solid rgba(0, 0, 0, 0.5);
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
