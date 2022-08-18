@@ -10,16 +10,6 @@ export default function Pokedex() {
   const [namePokemon, setNamePokemon] = useState();
   const [spinner, setSpinner] = useState();
 
-  // let namePokemon = "pikachu";
-
-  // useEffect(() => {
-  //   const getDatas = async () => {
-  //     const response = await api.get(`pokemon/${namePokemon}`);
-  //     setData(response);
-  //   }
-  //   getDatas();
-  // });
-
   function timeout(delay) {
     return new Promise(res => setTimeout(res, delay));
   }
@@ -98,7 +88,7 @@ export default function Pokedex() {
             <input
               className='text-input'
               type='text'
-              name="cnpj"
+              name="pokemon"
               id="name"
               placeholder="Enter the Pokémon's NAME or ID"
               onChange={handleChange}
