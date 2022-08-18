@@ -15,9 +15,6 @@ export default function Pokedex() {
 
   const getPokemon = async (name) => {
     try {
-      setPokemon(null);
-      setSpinner(true);
-      await timeout(1000);
       const response = await api.get(`pokemon/${name}`);
       console.log('response:', response);
 
@@ -33,8 +30,11 @@ export default function Pokedex() {
     setNamePokemon(event.target.value);
   };
 
-  const handleClick = event => {
+  const handleClick = async event => {
     event.preventDefault();
+    setPokemon(null);
+    setSpinner(true);
+    await timeout(1500);
     if (!namePokemon) {
       getPokemon('*');
     }
