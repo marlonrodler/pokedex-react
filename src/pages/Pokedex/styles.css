@@ -165,8 +165,8 @@
 }
 
 .spinner-container {
-  position: fixed;
-  width: 400px;
+  max-width: 400px;
+  width: 100%;
   opacity: 0.8;
   background-color: #fff;
   background-size: cover;
