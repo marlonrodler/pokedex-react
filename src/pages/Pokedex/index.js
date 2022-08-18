@@ -71,13 +71,24 @@ export default function Pokedex() {
                   ''
                 )
               }
-              {pokemon ? (
-                <img src={pokemon['data']['sprites']['other']['official-artwork']['front_default']} alt={pokemon.data.name} />
-              ) : (
-                <div className={spinner ? 'display-none' : 'error-line'}>
-                  <h2>Pokemon not found</h2>
-                </div>
-              )}
+              {
+                pokemon ? (
+                  <img src={pokemon['data']['sprites']['other']['official-artwork']['front_default']} alt={pokemon.data.name} />
+                ) : (
+                  <div className={spinner ? 'display-none' : 'error-line'}>
+                    <h2>Pokemon not found</h2>
+                  </div>
+                )
+              }
+            </div>
+            <div className='name-pokemon'>
+              {
+                pokemon ? (
+                  <p className='text-center'>{pokemon.data.id} - {pokemon.data.name}</p>
+                ):(
+                  ''
+                )
+              }
             </div>
           </div>
         </div>
@@ -89,7 +100,7 @@ export default function Pokedex() {
               type='text'
               name="cnpj"
               id="name"
-              placeholder='Digite o NOME ou ID do Pokémon'
+              placeholder="Enter the Pokémon's NAME or ID"
               onChange={handleChange}
               value={namePokemon}
             />

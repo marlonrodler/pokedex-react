@@ -1,10 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@400;500;600&family=Silkscreen&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@400;500;600&family=Montserrat+Alternates:wght@300;400;500;600;700&family=Silkscreen&display=swap');
 
 .container {
   max-width: 1200px;
   margin: 50px auto 0px;
   height: 100%;
   padding: 15px;
+  font-family: 'Montserrat Alternates', Helvetica, sans-serif;
 }
 
 .text-center {
@@ -53,9 +54,9 @@
   border: 1px solid #ccc;
   border-radius: 3px;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-  font-size: 1rem;
-  font-family: 'DynaPuff', Helvetica, sans-serif;
-  font-weight: 400;
+  font-size: 0.9rem;
+  font-family: 'Montserrat Alternates', Helvetica, sans-serif;
+  font-weight: 600;
 }
 
 .form-group {
@@ -78,6 +79,7 @@
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   font-weight: bold;
   letter-spacing: 2px;
+  font-family: 'Montserrat Alternates', Helvetica, sans-serif;
   text-align: center;
 }
 
@@ -187,6 +189,7 @@
 
 .error-line {
   background-color: rgba(0, 0, 0, 0.5);
+  font-family: 'Montserrat Alternates', Helvetica, sans-serif;
   color: #DC0A2D;
   font-size: 1rem;
   width: 100%;
@@ -211,4 +214,11 @@
   100% {
     opacity: 0;
   }
+}
+
+.name-pokemon p{
+  text-transform: uppercase;
+  font-family: 'Montserrat Alternates', Helvetica, sans-serif;
+  font-weight: 700;
+  letter-spacing: 2px;
 }
