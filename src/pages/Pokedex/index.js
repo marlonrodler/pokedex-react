@@ -46,6 +46,9 @@ export default function Pokedex() {
 
   const handleClick = event => {
     event.preventDefault();
+    if (!namePokemon) {
+      getPokemon('*');
+    }
     getPokemon(namePokemon.toLowerCase());
   };
 
