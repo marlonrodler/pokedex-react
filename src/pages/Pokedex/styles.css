@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@400;500;600&family=Silkscreen&display=swap');
+
+.container {
+  max-width: 1200px;
+  margin: 50px auto 0px;
+  height: 100%;
+  padding: 15px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.base-pokedex {
+  max-width: calc(530px - 12px);
+  margin: 0px auto;
+  background-color: #c3321d;
+  padding: 6px;
+  border-radius: 6px;
+  box-shadow: inset 45px 45px 50px -15px rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.base-pokedex h1 {
+  text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
+    1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
+}
+
+.display-pokedex {
+  max-width: calc(470px - 70px);
+  height: calc(300px - 70px);
+  background-color: #DEDEDE;
+  border: 1px solid rgba(0, 0, 0, 0.6);
+  border-radius: 15px;
+  margin: 0px auto;
+  padding: 35px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.body-pokedex {
+  width: 100%;
+  max-width: 440px;
+  margin: 10px auto 0px;
+  font-size: 1rem;
+  /* 1rem = 16px*/
+  padding: 16px 0px 8px;
+}
+
+.text-input {
+  padding: 4px 10px;
+  width: 100%;
+  max-width: calc(100% - 20px);
+  height: calc(40px - 8px);
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  font-size: 1rem;
+  font-family: 'DynaPuff', Helvetica, sans-serif;
+  font-weight: 400;
+}
+
+.form-group {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+}
+
+.btn-action {
+  width: 100%;
+  max-width: 200px;
+  height: 46px;
+  font-size: 1.3rem;
+  background: #52B027;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.btn-action:hover {
+  filter: brightness(1.1);
+}
+
+.info-pokedex {
+  width: 100%;
+  margin: 0 auto;
+  background-image: url(https://i.pinimg.com/736x/d6/7c/3c/d67c3cbce4d7e9355e8522e10434d76c.jpg);
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  height: 100%;
+  box-shadow: inset -10px -10px 25px 0px rgba(0, 0, 0, 0.6);
+
+}
+
+.img-pokedex {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-pokedex img {
+  width: 100%;
+  max-width: 200px;
+  transition: all 0.2s ease;
+}
+
+.img-pokedex img:hover {
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+.border-circle {
+  display: flex;
+  height: 50px;
+  width: 50px;
+  margin: 0 auto;
+  align-items: center;
+  background-color: #bbb;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+.circle {
+  display: flex;
+  height: 40px;
+  width: 40px;
+  margin: 0 auto;
+  align-items: center;
+  background-color: #2CACFC;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+  animation: animateCircle 1.5s linear infinite;
+}
+
+@keyframes animateCircle {
+  0% {
+    filter: brightness(0.8);
+  }
+
+  50% {
+    filter: brightness(1.2);
+  }
+
+  100% {
+    filter: brightness(0.8);
+  }
+}
+
+.column {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.text-end {
+  text-align: end;
+}
+
+.spinner-container {
+  position: fixed;
+  width: 400px;
+  opacity: 0.8;
+  background-color: #fff;
+  background-size: cover;
+  border-radius: 7px;
+  height: 230px;
+}
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.display-none {
+  display: none;
+}
+
+.error-line {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #DC0A2D;
+  font-size: 1rem;
+  width: 100%;
+  text-align: center;
+  text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
+    1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
+}
+
+.error-line h2 {
+  animation: animateTextError 1.5s linear infinite;
+}
+
+@keyframes animateTextError {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
