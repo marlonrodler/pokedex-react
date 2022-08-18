@@ -104,7 +104,7 @@ export default function Pokedex() {
               </div>
             </div>
             <div className='column text-end'>
-              <button type="button" class="btn-action" onClick={handleClick}>SEARCH</button>
+              <button type="button" className="btn-action" onClick={handleClick}>SEARCH</button>
             </div>
           </div>
         </div>
