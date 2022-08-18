@@ -1,4 +1,4 @@
 # pokedex-react
 Desenvolvimento de aplicação para fins de estudo de React.
 
-![](https://github.com/marlonrodler/pokedex-react/content/pokedex.gif)
+<img src="https://github.com/marlonrodler/marlonrodler/pokedex-react/content/pokedex.gif" width="442" height="314">
