@@ -39,7 +39,9 @@ button, input { font: inherit; color: inherit; }
   grid-template-columns: minmax(0, 1fr);
   filter: drop-shadow(0 30px 40px rgb(80 0 10 / 0.25));
 }
+@media (max-width: 899px) { .dex { width: min(100%, 560px); } }
 @media (min-width: 900px) { .dex { grid-template-columns: minmax(0, 1fr) 18px minmax(0, 1fr); } }
+@media (max-width: 360px) { .btn--search { padding: 0 12px; } .search { gap: 8px; } }
 
 .dex__left, .dex__right {
   background: linear-gradient(160deg, var(--red-3), var(--red) 30%, var(--red-2));
