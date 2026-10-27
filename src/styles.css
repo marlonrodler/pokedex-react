@@ -143,7 +143,17 @@ button, input { font: inherit; color: inherit; }
 .types { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 0; padding: 0; list-style: none; }
 .types li { padding: 3px 12px; border-radius: 99px; background: var(--c); color: var(--ci); font-size: 0.8125rem; font-weight: 700; }
 .info__flavor { margin: 14px 0 0; padding: 12px 14px; border-left: 3px solid var(--type); background: rgb(255 255 255 / 0.04); color: var(--lcd-ink); font-size: 0.9375rem; }
-.info__lang { color: var(--lcd-dim); font-size: 0.8125rem; }
+.flavor { margin-top: 14px; }
+.flavor__head { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.flavor__label { font-size: 0.75rem; color: var(--lcd-dim); }
+.flavor__select {
+  min-height: 32px; padding: 0 28px 0 10px; border-radius: 6px;
+  border: 1px solid rgb(255 255 255 / 0.18); background: rgb(255 255 255 / 0.06); color: var(--lcd-ink);
+  font-size: 0.875rem; color-scheme: dark; cursor: pointer;
+}
+.flavor__select:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+.flavor .info__flavor { margin-top: 0; }
+.flavor__note { margin: 6px 0 0; font-size: 0.75rem; color: var(--lcd-dim); }
 
 .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 16px 0 0; }
 .facts div { padding: 10px 12px; border-radius: 8px; background: rgb(255 255 255 / 0.05); }

@@ -1,6 +1,15 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { NotFoundError, getPokemon, getSpeciesNames, toQuery } from './api/pokeapi';
-import { LANGS, STATS, pad, titleCase, typeInfo } from './labels';
+import { LANGS, LANG_FALLBACK, STATS, pad, titleCase, typeInfo } from './labels';
+
+const LANG_KEY = 'pokedex:lang';
+const readLang = () => {
+  try {
+    return localStorage.getItem(LANG_KEY) || 'es';
+  } catch {
+    return 'es';
+  }
+};
 
 const FIRST = '1';
 const readHash = () => decodeURIComponent(window.location.hash.replace(/^#\/?/, ''));
@@ -10,6 +19,7 @@ export default function App() {
   const [text, setText] = useState('');
   const [species, setSpecies] = useState({ count: 1025, names: [] });
   const [imgFailed, setImgFailed] = useState(false);
+  const [lang, setLang] = useState(readLang);
   const ctrlRef = useRef(null);
   const audioRef = useRef(null);
   const inputRef = useRef(null);
@@ -103,6 +113,9 @@ export default function App() {
     empty: 'Digite um nome ou número para buscar.',
   }[view.status];
   const mainType = p ? typeInfo(p.types[0]).color : '#5a6b7a';
+  // Idiomas com descrição para este Pokémon; usa a escolha da pessoa ou o primeiro que existir
+  const available = p ? LANGS.filter(([code]) => p.flavors[code]) : [];
+  const shownLang = p?.flavors[lang] ? lang : [...LANG_FALLBACK, ...available.map(([c]) => c)].find((c) => p?.flavors[c]);
 
   return (
     <div className="page" style={{ '--type': mainType }}>
@@ -190,11 +203,25 @@ export default function App() {
                 </ul>
               </header>
 
-              {p.flavor && (
-                <p className="info__flavor" lang={p.flavor.lang}>
-                  {p.flavor.text}
-                  {p.flavor.lang !== 'pt-BR' && <span className="info__lang"> (descrição em {LANGS[p.flavor.lang]})</span>}
-                </p>
+              {available.length > 0 && (
+                <div className="flavor">
+                  <div className="flavor__head">
+                    <label htmlFor="lang" className="flavor__label">Descrição em</label>
+                    <select
+                      id="lang"
+                      className="flavor__select"
+                      value={shownLang}
+                      onChange={(e) => {
+                        setLang(e.target.value);
+                        try { localStorage.setItem(LANG_KEY, e.target.value); } catch { /* sem armazenamento */ }
+                      }}
+                    >
+                      {available.map(([code, name]) => <option key={code} value={code}>{name}</option>)}
+                    </select>
+                  </div>
+                  <p className="info__flavor" lang={shownLang}>{p.flavors[shownLang]}</p>
+                  {!p.flavors['pt-BR'] && <p className="flavor__note">A PokéAPI ainda não tem descrições em português.</p>}
+                </div>
               )}
 
               <dl className="facts">

@@ -31,7 +31,23 @@ export const STATS = {
   speed: 'Velocidade',
 };
 
-export const LANGS = { 'pt-BR': 'português', pt: 'português', es: 'espanhol', en: 'inglês' };
+// Idiomas que a PokéAPI oferece, na ordem do seletor. Cada um com o nome na própria língua.
+export const LANGS = [
+  ['pt-BR', 'Português'],
+  ['es', 'Español'],
+  ['es-419', 'Español (Latinoamérica)'],
+  ['en', 'English'],
+  ['fr', 'Français'],
+  ['it', 'Italiano'],
+  ['de', 'Deutsch'],
+  ['ja', '日本語'],
+  ['ja-hrkt', '日本語 (かな)'],
+  ['ko', '한국어'],
+  ['zh-hans', '中文 (简体)'],
+  ['zh-hant', '中文 (繁體)'],
+];
+// Se o idioma escolhido não existir para um Pokémon, tenta estes, nesta ordem
+export const LANG_FALLBACK = ['pt-BR', 'es', 'es-419', 'en'];
 
 /** "lightning-rod" → "Lightning Rod" */
 export const titleCase = (s = '') => s.split('-').map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');

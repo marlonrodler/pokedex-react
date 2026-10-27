@@ -33,14 +33,14 @@ export function toQuery(text = '') {
     .replace(/\s+/g, '-');
 }
 
-const pickFlavor = (entries) => {
-  const order = ['pt-BR', 'pt', 'es', 'en'];
-  for (const lang of order) {
-    const found = [...entries].reverse().find((e) => e.language.name === lang);
-    if (found) return { text: found.flavor_text.replace(/[\f\n\r­]+/g, ' ').replace(/\s+/g, ' ').trim(), lang };
-  }
-  return null;
-};
+const cleanText = (t) => t.replace(/[\f\n\r\u00ad]+/g, ' ').replace(/\s+/g, ' ').trim();
+
+/** A descrição mais recente de cada idioma: { en: '...', es: '...', ... } */
+export function flavorsByLang(entries = []) {
+  const out = {};
+  for (const e of entries) out[e.language.name] = cleanText(e.flavor_text); // a lista vem do jogo mais antigo ao mais novo
+  return out;
+}
 
 /** Busca um Pokémon pelo nome ou número e devolve só o que a tela usa. */
 export async function getPokemon(query, signal) {
@@ -65,7 +65,7 @@ export async function getPokemon(query, signal) {
     abilities: p.abilities.map((a) => ({ name: a.ability.name, hidden: a.is_hidden })),
     stats: p.stats.map((s) => ({ name: s.stat.name, value: s.base_stat })),
     genus: species?.genera?.find((g) => g.language.name === 'en')?.genus ?? null,
-    flavor: species ? pickFlavor(species.flavor_text_entries) : null,
+    flavors: species ? flavorsByLang(species.flavor_text_entries) : {},
     cry: p.cries?.latest || p.cries?.legacy || null,
   };
 }

@@ -33,11 +33,27 @@ describe('busca', () => {
     expect(p.types).toEqual(['grass', 'poison']);
     expect(p.height).toBe(0.7);
     expect(p.weight).toBe(6.9);
-    expect(p.flavor).toEqual({ text: 'A strange seed was planted on its back at birth.', lang: 'en' });
+    expect(p.flavors).toEqual({
+      en: 'A strange seed was planted on its back at birth.', // a mais recente de cada idioma
+      es: 'Una semilla rara fue plantada en su lomo.',
+      fr: 'Une étrange graine.',
+    });
   });
 });
 
 describe('tela', () => {
+  it('mostra a descrição em espanhol e deixa trocar o idioma, lembrando a escolha', async () => {
+    const user = userEvent.setup();
+    localStorage.clear();
+    render(<App />);
+    expect(await screen.findByText('Una semilla rara fue plantada en su lomo.')).toBeInTheDocument();
+    const select = screen.getByLabelText(/descrição em/i);
+    expect([...select.options].map((o) => o.textContent)).toEqual(['Español', 'English', 'Français']);
+    await user.selectOptions(select, 'fr');
+    expect(screen.getByText('Une étrange graine.')).toBeInTheDocument();
+    expect(localStorage.getItem('pokedex:lang')).toBe('fr');
+  });
+
   it('abre no número 1 e busca com Enter', async () => {
     const user = userEvent.setup();
     render(<App />);

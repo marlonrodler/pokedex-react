@@ -18,7 +18,12 @@ const species = (id, name) => ({
   id,
   names: [{ name, language: { name: 'en' } }],
   genera: [{ genus: 'Seed Pokémon', language: { name: 'en' } }],
-  flavor_text_entries: [{ flavor_text: 'A strange seed was\nplanted on its\fback at birth.', language: { name: 'en' } }],
+  flavor_text_entries: [
+    { flavor_text: 'Old english text.', language: { name: 'en' } },
+    { flavor_text: 'A strange seed was\nplanted on its\fback at birth.', language: { name: 'en' } },
+    { flavor_text: 'Una semilla rara\nfue plantada en su lomo.', language: { name: 'es' } },
+    { flavor_text: 'Une étrange graine.', language: { name: 'fr' } },
+  ],
 });
 
 export const MONS = {

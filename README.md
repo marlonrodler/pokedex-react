@@ -13,7 +13,7 @@ Busque qualquer Pokémon pelo nome ou número e veja tipos, altura, peso, habili
 
 ## Dados
 
-Tudo vem da [PokéAPI](https://pokeapi.co). Cada Pokémon é buscado uma vez por visita (cache em memória), e uma busca nova cancela a anterior. A descrição aparece em português quando a PokéAPI tem; senão, em espanhol ou inglês, com aviso.
+Tudo vem da [PokéAPI](https://pokeapi.co). Cada Pokémon é buscado uma vez por visita (cache em memória), e uma busca nova cancela a anterior. A PokéAPI ainda não tem descrições em português, então a Pokédex mostra um seletor com os idiomas disponíveis para cada Pokémon (espanhol por padrão). A escolha fica guardada no navegador.
 
 ## Tecnologias
 
