@@ -15,17 +15,22 @@
   --sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --type: #5a6b7a;
 }
+/* --type vem do JavaScript, no html */
 
 *, *::before, *::after { box-sizing: border-box; }
+/* Fundo de uma cor só, levemente tingida pelo tipo do Pokémon. Fica no html para cobrir
+   também a área da barra de status do celular, sem faixa clara no topo. */
+html {
+  --page: color-mix(in srgb, var(--type) 16%, #efe9e1);
+  background: var(--page);
+  transition: background-color 400ms;
+}
 body {
   margin: 0;
   min-height: 100vh;
   font: 400 1rem/1.5 var(--sans);
   color: var(--ink);
-  background:
-    radial-gradient(70rem 40rem at 50% 0%, color-mix(in srgb, var(--type) 30%, transparent), transparent 70%),
-    #f2efe9;
-  transition: background-color 400ms;
+  background: transparent;
   -webkit-font-smoothing: antialiased;
 }
 button, input { font: inherit; color: inherit; }
@@ -40,23 +45,57 @@ button, input { font: inherit; color: inherit; }
   filter: drop-shadow(0 30px 40px rgb(80 0 10 / 0.25));
 }
 @media (max-width: 899px) { .dex { width: min(100%, 560px); } }
-@media (min-width: 900px) { .dex { grid-template-columns: minmax(0, 1fr) 18px minmax(0, 1fr); } }
+@media (min-width: 900px) { .dex { grid-template-columns: minmax(0, 1fr) 22px minmax(0, 1fr); } }
 @media (max-width: 360px) { .btn--search { padding: 0 12px; } .search { gap: 8px; } }
 
 .dex__left, .dex__right {
   background: linear-gradient(160deg, var(--red-3), var(--red) 30%, var(--red-2));
   padding: 20px clamp(16px, 3vw, 28px) 24px;
 }
-.dex__left { border-radius: 22px 22px 0 0; box-shadow: inset 0 2px 0 rgb(255 255 255 / 0.25); }
-.dex__right { border-radius: 0 0 22px 22px; padding-top: 4px; }
+/* Duas tampas ligadas por uma dobradiça, como um celular flip */
+.dex__left, .dex__right { box-shadow: inset 0 2px 0 rgb(255 255 255 / 0.25), inset 0 -3px 0 rgb(0 0 0 / 0.18); }
+.dex__left { border-radius: 24px 24px 14px 14px; }
+.dex__right { border-radius: 14px 14px 24px 24px; padding-top: 22px; }
 @media (min-width: 900px) {
-  .dex__left { border-radius: 22px 6px 6px 22px; }
-  .dex__right { border-radius: 6px 22px 22px 6px; padding-top: 92px; box-shadow: inset 0 2px 0 rgb(255 255 255 / 0.25); }
+  .dex__left { border-radius: 24px 14px 14px 24px; }
+  .dex__right { border-radius: 14px 24px 24px 14px; padding-top: 92px; }
 }
-.hinge { display: none; }
+
+/* Dobradiça: um cilindro no meio e dois pinos de metal nas pontas */
+.hinge {
+  position: relative; z-index: 1;
+  height: 22px; margin: -6px 22%;
+  border-radius: 11px;
+  background: linear-gradient(180deg, #5c0412, #b80a26 30%, #ef4a62 48%, #a30821 68%, #5c0412);
+  box-shadow: 0 2px 4px rgb(0 0 0 / 0.35);
+}
+.hinge::before, .hinge::after {
+  content: ''; position: absolute; top: -2px; bottom: -2px; width: 18%;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #1b1f24, #4a5058 30%, #9aa1a9 48%, #3a3f46 70%, #1b1f24);
+}
+.hinge::before { left: -20%; }
+.hinge::after { right: -20%; }
 @media (min-width: 900px) {
-  .hinge { display: block; margin: 40px 0; border-radius: 6px; background: linear-gradient(90deg, #7a0618, #c20a28 40%, #7a0618); }
+  .hinge {
+    width: 22px; height: 56%; align-self: center; margin: 0 -6px;
+    background: linear-gradient(90deg, #5c0412, #b80a26 30%, #ef4a62 48%, #a30821 68%, #5c0412);
+  }
+  .hinge::before, .hinge::after {
+    top: auto; bottom: auto; left: -2px; right: -2px; width: auto; height: 22%;
+    background: linear-gradient(90deg, #1b1f24, #4a5058 30%, #9aa1a9 48%, #3a3f46 70%, #1b1f24);
+  }
+  .hinge::before { top: -24%; }
+  .hinge::after { bottom: -24%; }
 }
+
+/* Ao abrir a página, a tampa de baixo (ou da direita) abre como um flip */
+@media (prefers-reduced-motion: no-preference) {
+  .dex__right { transform-origin: top center; animation: flip-open 700ms cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+  @media (min-width: 900px) { .dex__right { transform-origin: left center; animation-name: flip-open-side; } }
+}
+@keyframes flip-open { from { transform: perspective(1400px) rotateX(-95deg); opacity: 0.4; } }
+@keyframes flip-open-side { from { transform: perspective(1400px) rotateY(95deg); opacity: 0.4; } }
 
 /* Topo: lente e luzes */
 .dex__top { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
@@ -115,6 +154,8 @@ button, input { font: inherit; color: inherit; }
 }
 .btn:hover { filter: brightness(1.08); }
 .btn:active { transform: translateY(2px); box-shadow: 0 1px 0 #1b1f24; }
+/* Botões com a mesma fonte pixelada do aparelho */
+.btn--search, .btn--random, .btn--cry { font-family: var(--pixel); font-weight: 400; letter-spacing: 0.03em; }
 .btn--search { background: var(--green); color: #0b3018; }
 .btn--random { background: #ffd23f; color: #3b2d00; min-height: 44px; }
 .pad { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 16px; }
@@ -173,7 +214,7 @@ button, input { font: inherit; color: inherit; }
 .stat--total { padding-top: 6px; margin-top: 2px; border-top: 1px solid rgb(255 255 255 / 0.1); }
 .stat--total dt { color: var(--lcd-ink); font-weight: 700; }
 
-.btn--cry { margin-top: 18px; min-height: 44px; background: #2b2f35; color: #fff; border-color: #0e1414; box-shadow: 0 3px 0 #0e1414; }
+.btn--cry { max-width: 100%; text-align: center; font-size: 0.875rem; margin-top: 18px; min-height: 44px; background: #2b2f35; color: #fff; border-color: #0e1414; box-shadow: 0 3px 0 #0e1414; }
 
 .foot { text-align: center; font-size: 0.8125rem; color: #5b5550; max-width: 46rem; margin: 0 auto; }
 .foot a { color: #a30821; }

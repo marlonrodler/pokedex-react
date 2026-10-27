@@ -113,12 +113,23 @@ export default function App() {
     empty: 'Digite um nome ou número para buscar.',
   }[view.status];
   const mainType = p ? typeInfo(p.types[0]).color : '#5a6b7a';
+
+  // A cor do fundo (e da barra do navegador no celular) acompanha o tipo do Pokémon
+  useEffect(() => {
+    const root = document.documentElement;
+    root.style.setProperty('--type', mainType);
+    // Mesma conta do CSS: 16% da cor do tipo sobre o fundo #efe9e1
+    const hex = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));
+    const [a, b] = [hex(mainType), hex('#efe9e1')];
+    const mix = a.map((v, i) => Math.round(v * 0.16 + b[i] * 0.84).toString(16).padStart(2, '0')).join('');
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', `#${mix}`);
+  }, [mainType]);
   // Idiomas com descrição para este Pokémon; usa a escolha da pessoa ou o primeiro que existir
   const available = p ? LANGS.filter(([code]) => p.flavors[code]) : [];
   const shownLang = p?.flavors[lang] ? lang : [...LANG_FALLBACK, ...available.map(([c]) => c)].find((c) => p?.flavors[c]);
 
   return (
-    <div className="page" style={{ '--type': mainType }}>
+    <div className="page">
       <main className="dex" aria-labelledby="dex-title">
         {/* Metade esquerda: tela e busca */}
         <section className="dex__left">
