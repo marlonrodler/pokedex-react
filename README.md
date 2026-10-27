@@ -1,6 +1,6 @@
 # Pokédex
 
-Busque qualquer Pokémon pelo nome ou número e veja tipos, altura, peso, habilidades, atributos base, a descrição da Pokédex e o grito.
+Busque qualquer Pokémon pelo nome ou número e veja tipos, altura, peso, habilidades, atributos base, a descrição da Pokédex e o som que ele faz nos jogos.
 
 **Usar:** https://marlonrodler.github.io/pokedex-react/
 
@@ -41,7 +41,7 @@ A primeira versão (2023) usava Create React App e mostrava só a imagem e o nom
 - Buscar com o campo vazio quebrava a página; agora aparece uma orientação.
 - Saiu a espera artificial de 1,5 segundo antes de cada busca, e o Enter passou a buscar.
 - Os fundos vinham de sites de terceiros (Pinterest e Alphacoders); agora o visual é todo em CSS.
-- Novos dados na tela: tipos, altura, peso, habilidades, atributos, descrição e grito.
+- Novos dados na tela: tipos, altura, peso, habilidades, atributos, descrição e som dos jogos.
 - Navegação por anterior, próximo e aleatório; endereço compartilhável; sugestões de nomes.
 - Cache, cancelamento de buscas, imagem reserva, acessibilidade e testes.
 

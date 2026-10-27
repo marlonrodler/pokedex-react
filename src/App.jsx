@@ -234,7 +234,7 @@ export default function App() {
               {p.cry && (
                 <button type="button" className="btn btn--cry" onClick={playCry}>
                   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" /><path d="M16.5 8.5a5 5 0 0 1 0 7" /></svg>
-                  Ouvir o grito
+                  Ouvir o som dos jogos
                 </button>
               )}
             </article>
